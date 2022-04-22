@@ -24,14 +24,17 @@ function clearGameBoard() {
   }
 }
 
-// attach listeners to buttons and sliders
-const resetButton = document.querySelector("#resetButton");
-resetButton.addEventListener("click", reset);
-
 //listener functions
 function reset() {
   clearGameBoard();
-  createGameBoard(32);
+  const sizeSlider = document.querySelector("#sizeSlider");
+  createGameBoard(sizeSlider.value);
+}
+
+function updateSize() {
+  const sizeDisplay = document.querySelector("#sizeDisplay");
+  const size = this.value;
+  sizeDisplay.textContent = `${size} x ${size}`;
 }
 
 // color modes
@@ -39,4 +42,11 @@ function makeBlack() {
   this.classList.add("black");
 }
 
-createGameBoard(32);
+// attach listeners to buttons and sliders
+const resetButton = document.querySelector("#resetButton");
+resetButton.addEventListener("click", reset);
+
+const sizeSlider = document.querySelector("#sizeSlider");
+sizeSlider.addEventListener("input", updateSize);
+
+createGameBoard(sizeSlider.value);
