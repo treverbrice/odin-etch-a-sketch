@@ -24,7 +24,7 @@ function clearGameBoard() {
   }
 }
 
-//listener functions
+// listener functions
 function reset() {
   clearGameBoard();
   const sizeSlider = document.querySelector("#sizeSlider");
@@ -32,14 +32,37 @@ function reset() {
 }
 
 function updateSize() {
+  // doesn't resize on update in order to reduce CPU usage
   const sizeDisplay = document.querySelector("#sizeDisplay");
   const size = this.value;
   sizeDisplay.textContent = `${size} x ${size}`;
 }
 
+function updateColorMode() {
+  const pieces = document.querySelectorAll(".gamePiece");
+  if (this.id == "black") {
+    pieces.forEach((piece) => {
+      piece.removeEventListener("mouseover", makeRGB);
+      piece.addEventListener("mouseover", makeBlack);
+    })
+  } else if (this.id == "rgb") {
+    pieces.forEach((piece) => {
+      piece.removeEventListener("mouseover", makeBlack);
+      piece.addEventListener("mouseover", makeRGB);
+    })
+  }
+}
+
 // color modes
 function makeBlack() {
-  this.classList.add("black");
+  this.style.setProperty("background-color", `rgb(0,0,0)`);
+}
+
+function makeRGB() {
+  const r = Math.floor(Math.random() * 255);
+  const g = Math.floor(Math.random() * 255);
+  const b = Math.floor(Math.random() * 255);
+  this.style.setProperty("background-color", `rgb(${r},${g},${b})`);
 }
 
 // attach listeners to buttons and sliders
@@ -48,5 +71,11 @@ resetButton.addEventListener("click", reset);
 
 const sizeSlider = document.querySelector("#sizeSlider");
 sizeSlider.addEventListener("input", updateSize);
+
+const blackButton = document.querySelector("#black");
+blackButton.addEventListener("click", updateColorMode);
+
+const rgbButton = document.querySelector("#rgb");
+rgbButton.addEventListener("click", updateColorMode);
 
 createGameBoard(sizeSlider.value);

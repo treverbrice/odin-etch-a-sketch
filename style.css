@@ -53,7 +53,3 @@ h1 {
 .rowDiv:not(:last-child) .gamePiece {
   border-bottom-width: 0;
 }
-
-.black {
-  background-color: black;
-}
