@@ -17,15 +17,26 @@ function createGameBoard(size) {
   }
 }
 
+function clearGameBoard() {
+  const gameBoard = document.querySelector("#gameBoard");
+  while (gameBoard.firstChild) {
+    gameBoard.removeChild(gameBoard.firstChild);
+  }
+}
+
+// attach listeners to buttons and sliders
+const resetButton = document.querySelector("#resetButton");
+resetButton.addEventListener("click", reset);
+
+//listener functions
+function reset() {
+  clearGameBoard();
+  createGameBoard(32);
+}
+
 // color modes
 function makeBlack() {
   this.classList.add("black");
 }
 
-
-
-// attach listeners to buttons and sliders
-
-//listener functions
-
-createGameBoard(16);
+createGameBoard(32);
