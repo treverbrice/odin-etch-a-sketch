@@ -1,11 +1,15 @@
 // create the gameBoard
 function createGameBoard(size) {
   const gameBoard = document.querySelector("#gameBoard");
-  for(let row = 1; row <= size; row++) {
-    for(let col = 1; col <= size; col++) {
+  for (let row = 1; row <= size; row++) {
+    const rowDiv = document.createElement("div");
+    rowDiv.classList.add("rowDiv");
+    for (let col = 1; col <= size; col++) {
       const gamePiece = document.createElement("div");
-      gameBoard.appendChild(gamePiece);
+      gamePiece.classList.add("gamePiece");
+      rowDiv.appendChild(gamePiece);
     }
+    gameBoard.appendChild(rowDiv);
   }
 }
   // create each div
@@ -17,4 +21,4 @@ function createGameBoard(size) {
 
 //listener functions
 
-createGameBoard(4);
+createGameBoard(10);
