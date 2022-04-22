@@ -1,8 +1,32 @@
+body {
+  background-color: lightgrey;
+}
+
+h1 {
+  text-align: center;
+}
+
+#main {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex: 0 0;
+}
+
+#sideBar {
+  display: flex;
+  flex-direction: column;
+  border-style: groove;
+  border-radius: 8px;
+  padding: 8px;
+  background-color: white;
+}
+
 #gameBoard {
   display: flex;
   flex-direction: column;
-  height: 960px;
-  width: 960px;
+  min-height: 960px;
+  min-width: 960px;
   flex: 0 0;
 }
 
@@ -17,6 +41,17 @@
   border-color: black;
   border-width: 1px;
   flex: 1 1 100px;
+  background-color: white;
+}
+
+/* removes double borders on game pieces */
+.gamePiece:not(:last-child) {
+  border-right-width: 0;
+}
+
+/* removes double borders on game pieces */
+.rowDiv:not(:last-child) .gamePiece {
+  border-bottom-width: 0;
 }
 
 .black {
