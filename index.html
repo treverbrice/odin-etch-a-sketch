@@ -4,9 +4,27 @@
     <meta charset="utf-8">
     <title>Etch-a-Sketch</title>
     <script src="script.js" defer></script>
-    <link rel="stylesheet" href="style.css"> 
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <div id="gameBoard"></div>
+    <h1>Etch-a-Sketch</h1>
+    <div id="main">
+      <div id="sideBar">
+        <h2>Options</h2>
+        <div class="optionsGroup">
+          <h3>Color Mode</h3>
+          <button type="button" class="colorMode" id="black">black</button>
+        </div>
+        <div class="optionsGroup">
+          <h3>Size</h3>
+          <input type="range" min="16" max="100" value="32" id="sizeSlider">
+          <p id="sizeDisplay">32 x 32</p>
+        </div>
+        <div class="optionsGroup">
+          <button type="button" id="resetButton"><h3>Reset</h3></button>
+        </div>
+      </div>
+      <div id="gameBoard"></div>
+    </div>
   </body>
 </html>
