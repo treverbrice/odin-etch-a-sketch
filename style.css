@@ -8,14 +8,17 @@
 
 .rowDiv {
   display: flex;
-  border-style: solid;
-  border-color: red;
   flex: 1 1 auto;
 }
 
 .gamePiece {
   display: flex;
   border-style: solid;
-  border-color: blue;
+  border-color: black;
+  border-width: 1px;
   flex: 1 1 100px;
+}
+
+.black {
+  background-color: black;
 }
